@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Exercise 3</title>
+</head>
+<body>
+    <h1>JS Exercise 3</h1>
+    <table>
+        <tr>
+            <td>Enter a Number:</td>
+            <td><input type="number" id="numInput"></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="insertNumber()">Insert</button>
+                <button onclick="deleteAll()">Delete All</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <p>Numbers:</p>
+    <div id="numberList"></div>
+    <br>
+    <p>Sum: <strong><span id="sum" style="color: blue;"></span></strong></p>
+    <p>Highest: <strong><span id="highest" style="color: green;"></span></strong></p>
+    <p>Lowest: <strong><span id="lowest" style="color: red;"></span></strong></p>
+
+    <script>
+        let numbers = [];
+
+        function insertNumber() {
+            const val = parseFloat(document.getElementById('numInput').value);
+            if (isNaN(val)) return;
+            numbers.push(val);
+            document.getElementById('numInput').value = '';
+            updateDisplay();
+        }
+
+        function deleteAll() {
+            numbers = [];
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const listDiv = document.getElementById('numberList');
+            listDiv.innerHTML = numbers.map(n => `<p>${n}</p>`).join('');
+
+            if (numbers.length > 0) {
+                document.getElementById('sum').textContent = numbers.reduce((a, b) => a + b, 0);
+                document.getElementById('highest').textContent = Math.max(...numbers);
+                document.getElementById('lowest').textContent = Math.min(...numbers);
+            } else {
+                document.getElementById('sum').textContent = '';
+                document.getElementById('highest').textContent = '';
+                document.getElementById('lowest').textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>

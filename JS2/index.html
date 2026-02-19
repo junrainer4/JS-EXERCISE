@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Exercise 2</title>
+</head>
+<body>
+    <h1>JS Exercise 2</h1>
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td><input type="text" id="firstName"></td>
+        </tr>
+        <tr>
+            <td>Middle Name:</td>
+            <td><input type="text" id="middleName"></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input type="text" id="lastName"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="generateFullname()">Generate Fullname</button>
+                <button onclick="clearEntries()">Clear Entries</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <p>Full Name:</p>
+    <p><strong id="fullName"></strong></p>
+
+    <script>
+        function generateFullname() {
+            const first = document.getElementById('firstName').value.trim();
+            const middle = document.getElementById('middleName').value.trim();
+            const last = document.getElementById('lastName').value.trim();
+            document.getElementById('fullName').textContent = `${first} ${middle} ${last}`;
+        }
+
+        function clearEntries() {
+            document.getElementById('firstName').value = '';
+            document.getElementById('middleName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('fullName').textContent = '';
+        }
+    </script>
+</body>
+</html>

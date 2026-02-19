@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Exercise 1</title>
+</head>
+<body>
+    <h1>JS Exercise 1</h1>
+    <table>
+        <tr>
+            <td>Enter First Number:</td>
+            <td><input type="number" id="num1"></td>
+        </tr>
+        <tr>
+            <td>Enter Second Number:</td>
+            <td><input type="number" id="num2"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="calculate()">Calculate</button>
+                <button onclick="clearFields()">Clear</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr><td>Sum:</td><td id="sum"></td></tr>
+        <tr><td>Difference:</td><td id="difference"></td></tr>
+        <tr><td>Product:</td><td id="product"></td></tr>
+        <tr><td>Quotient:</td><td id="quotient"></td></tr>
+    </table>
+
+    <script>
+        function calculate() {
+            const a = parseFloat(document.getElementById('num1').value);
+            const b = parseFloat(document.getElementById('num2').value);
+            document.getElementById('sum').textContent = a + b;
+            document.getElementById('difference').textContent = a - b;
+            document.getElementById('product').textContent = a * b;
+            document.getElementById('quotient').textContent = b !== 0 ? a / b : 'Cannot divide by zero';
+        }
+
+        function clearFields() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            ['sum','difference','product','quotient'].forEach(id => document.getElementById(id).textContent = '');
+        }
+    </script>
+</body>
+</html>
